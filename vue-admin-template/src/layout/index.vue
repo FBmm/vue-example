@@ -2,11 +2,12 @@
   <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <MainMenu />
-    <sidebar v-if="showSlidebar" class="sidebar-container" />
+    
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
-        <navbar />
+        <!-- <navbar /> -->
       </div>
+      <sidebar v-if="showSlidebar" class="sidebar-container" />
       <app-main />
     </div>
   </div>
@@ -68,6 +69,8 @@ export default {
     position: relative;
     height: 100%;
     width: 100%;
+    // 禁止全局滚动
+    overflow: hidden;
     &.mobile.openSidebar{
       position: fixed;
       top: 0;
