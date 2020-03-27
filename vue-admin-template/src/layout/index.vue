@@ -7,14 +7,15 @@
       <div :class="{'fixed-header':fixedHeader}">
         <!-- <navbar /> -->
       </div>
-      <sidebar v-if="showSlidebar" class="sidebar-container" />
+      <!-- <sidebar v-if="showSlidebar" class="sidebar-container" /> -->
+      <LeftTreeMenu class="sidebar-container" />
       <app-main />
     </div>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain, MainMenu } from './components'
+import { Navbar, Sidebar, AppMain, MainMenu, LeftTreeMenu } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -23,7 +24,8 @@ export default {
     Navbar,
     Sidebar,
     AppMain,
-    MainMenu
+    MainMenu,
+    LeftTreeMenu,
   },
   mixins: [ResizeMixin],
   computed: {
