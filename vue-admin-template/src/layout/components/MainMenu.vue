@@ -7,32 +7,46 @@
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
-  > 
+  >
     <template v-for="(item) in menuConfig" :index="item.name">
-      <el-submenu v-if="!item.hidden && item.children" :key="item.name" :index="item.name" :disabled="item.disabled">
-        <template slot="title">{{item.title}}</template>
+      <el-menu-item
+        v-if="!item.hidden && !item.children"
+        :key="item.name"
+        :index="item.name"
+        :disabled="item.disabled"
+      >
+        <router-link :to="item.route">{{item.title}}</router-link>
+      </el-menu-item>
+      <el-submenu
+        v-if="!item.hidden && item.children"
+        :key="item.name"
+        :index="item.name"
+        :disabled="item.disabled"
+      >
+        <template slot="title">
+          <router-link :to="item.route">{{item.title}}</router-link>
+        </template>
         <template v-for="(subItem) in item.children">
-          <el-menu-item v-if="!subItem.hidden" :key="subItem.name" :index="subItem.name" :disabled="subItem.disabled">{{subItem.title}}</el-menu-item>
+          <router-link v-if="!subItem.hidden" :to="subItem.route" :key="subItem.name">
+            <el-menu-item :index="subItem.name" :disabled="subItem.disabled">{{subItem.title}}</el-menu-item>
+          </router-link>
         </template>
       </el-submenu>
-      <el-menu-item v-if="!item.hidden && !item.children" :key="item.name" :index="item.name" :disabled="item.disabled">
-        {{item.title}}
-      </el-menu-item>
     </template>
   </el-menu>
 </template>
 <script>
-import { menuConfig } from '@/config/menu';
+import { menuConfig } from "@/config/menu";
 export default {
-  name: 'MainMenu',
+  name: "MainMenu",
   data() {
     return {
       activeIndex: "home",
-      menuConfig: menuConfig,
+      menuConfig: menuConfig
     };
   },
   mounted() {
-    console.log(menuConfig)
+    console.log(menuConfig);
   },
   methods: {
     handleSelect(key, keyPath) {
