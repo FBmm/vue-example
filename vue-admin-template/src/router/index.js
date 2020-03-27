@@ -69,6 +69,20 @@ export const constantRoutes = [
   },
 
   {
+    path: '/provision',
+    component: Layout,
+    redirect: '/provision/volume',
+    children: [
+      {
+        path: 'volume',
+        name: 'Volume',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Volume', icon: 'volume' }
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
