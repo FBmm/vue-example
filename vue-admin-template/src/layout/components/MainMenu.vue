@@ -8,7 +8,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-    <template v-for="(item) in menuConfig" :index="item.name">
+    <template v-for="(item) in menus" :index="item.name">
       <el-menu-item
         v-if="!item.hidden && !item.children"
         :key="item.name"
@@ -36,17 +36,21 @@
   </el-menu>
 </template>
 <script>
-import { menuConfig } from "@/config/menu";
+import menus from "@/config/menu";
 export default {
   name: "MainMenu",
   data() {
     return {
       activeIndex: "home",
-      menuConfig: menuConfig
     };
   },
+  computed: {
+    menus() {
+      return menus;
+    }
+  },
   mounted() {
-    console.log(menuConfig);
+    console.log(this.menus);
   },
   methods: {
     handleSelect(key, keyPath) {
