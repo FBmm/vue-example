@@ -2,7 +2,7 @@ const menuConfig = [{
     name: 'home',
     title: '首页',
     route: '/home',
-    icon: '',
+    icon: 'el-icon-location',
     hidden: false
   },
 
@@ -10,7 +10,7 @@ const menuConfig = [{
     name: 'provision',
     title: '资源分配',
     route: '/provision',
-    icon: '',
+    icon: 'el-icon-location',
     hidden: false,
     children: [{
       name: 'host',
@@ -31,7 +31,7 @@ const menuConfig = [{
     name: 'protected',
     title: '数据保护',
     route: '/protected',
-    icon: '',
+    icon: 'el-icon-location',
     children: [{
       name: 'replication-pair',
       title: '远程复制 Pair',
