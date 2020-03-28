@@ -7,8 +7,8 @@
       <div :class="{'fixed-header':fixedHeader}">
         <!-- <navbar /> -->
       </div>
-      <!-- <sidebar v-if="showSlidebar" class="sidebar-container" /> -->
-      <LeftTreeMenu class="sidebar-container" />
+      <!-- <sidebar v-if="showLeftTreeMenu" class="sidebar-container" /> -->
+      <LeftTreeMenu v-if="showLeftTreeMenu" class="sidebar-container" />
       <app-main />
     </div>
   </div>
@@ -50,7 +50,7 @@ export default {
         mobile: this.device === 'mobile'
       }
     },
-    showSlidebar() {
+    showLeftTreeMenu() {
       return !this.isHome;
     }
   },
