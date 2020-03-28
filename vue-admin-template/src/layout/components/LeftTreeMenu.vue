@@ -14,36 +14,15 @@
       :text-color="variables.menuText"
       :active-text-color="variables.menuActiveText"
     >
-      <el-submenu index="1">
+      <el-submenu v-for="item in leftMenus" :key="item.name">
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">导航一</span>
+            <i :class="item.icon"></i>
+            <span slot="title">{{item.title}}</span>
         </template>
-        <el-menu-item-group>
-          <span slot="title">分组一</span>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
+        <el-menu-item v-for="subItem in item.children" :key="subItem.name">
+          <span slot="title">{{subItem.title}}</span>
+        </el-menu-item>
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -55,16 +34,24 @@
 </style>
 
 <script>
+import menus from "@/config/menu";
 import variables from "@/styles/variables.scss";
 export default {
   data() {
     return {
-      isCollapse: true
+      isCollapse: false
     };
   },
   computed: {
     variables() {
+      
       return variables;
+    },
+    // 当前主导航对应的左树菜单
+    leftMenus() {
+      return menus.filter((item) => {
+        return this.$route.path.includes(item.name);
+      });
     }
   },
   methods: {
