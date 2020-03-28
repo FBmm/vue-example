@@ -1,4 +1,4 @@
-export const menuConfig = [{
+const menuConfig = [{
     name: 'home',
     title: '首页',
     route: '/home',
@@ -64,3 +64,9 @@ export const menuConfig = [{
     disabled: true
   }
 ]
+
+function MenuFactory(config) {
+  return config;
+}
+
+export default new MenuFactory(menuConfig);
