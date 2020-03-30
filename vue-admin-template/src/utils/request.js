@@ -7,14 +7,27 @@ import { getToken } from '@/utils/auth'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000 // request timeout
+  timeout: 5000, // request timeout
+  // transformRequest: [(data, headers) => {
+  //   // 对 data 进行任意转换处理
+  //   console.log('req', data)
+  //   console.log('req', headers)
+  //   return data;
+  // }],
+
+  // `transformResponse` 在传递给 then/catch 前，允许修改响应数据
+  // transformResponse: [(data) => {
+  //   // 对 data 进行任意转换处理
+  //   console.log('res', data)
+  //   return data;
+  // }]
 })
 
 // request interceptor
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-
+    console.log(config)
     if (store.getters.token) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
@@ -44,9 +57,9 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    console.log('response', response)
+    // if the custom code is not 0, it is judged as an error.
+    if (res.code !== 0) {
       Message({
         message: res.message || 'Error',
         type: 'error',
