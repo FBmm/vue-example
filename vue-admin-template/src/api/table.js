@@ -3,7 +3,9 @@ import request from '@/utils/request'
 export function getList(params) {
   return request({
     url: '/vue-admin-template/table/list',
+    baseURL:"/",
     method: 'get',
-    params
+    params,
+    timeout: 60000
   })
 }
