@@ -7,6 +7,20 @@ const menuConfig = [{
   },
 
   {
+    name: 'vue',
+    title: 'vue学习',
+    route: '/vue',
+    icon: 'el-icon-location',
+    hidden: false,
+    children: [{
+      name: 'slot',
+      title: '插槽',
+      route: '/vue/slot',
+      icon: '',
+    }]
+  },
+
+  {
     name: 'provision',
     title: '资源分配',
     route: '/provision',
