@@ -83,6 +83,20 @@ export const constantRoutes = [
   },
 
   {
+    path: '/vue',
+    component: Layout,
+    redirect: '/vue/slot',
+    children: [
+      {
+        path: 'slot',
+        name: 'Slot',
+        component: () => import('@/views/vue/slot/index'),
+        meta: { title: 'Slot', icon: 'slot' }
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
