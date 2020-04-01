@@ -27,6 +27,14 @@
     <layout>
       <template v-slot:footer="slotProps" >{{slotProps.props}}</template>
     </layout>
+    <h3>6. 作用域默认插槽</h3>
+    <layout>
+      <template v-slot="defaultProps" >{{defaultProps}}</template>
+    </layout>
+    <h3>5. 作用域插槽解构</h3>
+    <layout>
+      <template v-slot:user="{props: aa}" >{{aa}}</template>
+    </layout>
   </div>
 </template>
 
