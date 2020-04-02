@@ -27,13 +27,27 @@
     <layout>
       <template v-slot:footer="slotProps" >{{slotProps.props}}</template>
     </layout>
+    <h1></h1>
     <h3>6. 作用域默认插槽</h3>
     <layout>
       <template v-slot="defaultProps" >{{defaultProps}}</template>
     </layout>
+    <h1></h1>
     <h3>5. 作用域插槽解构</h3>
     <layout>
       <template v-slot:user="{props: aa}" >{{aa}}</template>
+    </layout>
+    <h1></h1>
+    <h3>6. 动态插槽名</h3>
+    <layout>
+      <template v-slot:[dynamicSlotName] >动态插槽名</template>
+    </layout>
+    <h1></h1>
+    <h3>7. 具名插槽的缩写</h3>
+    <layout>
+      <template #header>具名插槽的缩写 header</template>
+      <template #footer>具名插槽的缩写 footer</template>
+      <template #user="{props: aa}">{{aa}}</template>
     </layout>
   </div>
 </template>
@@ -47,7 +61,8 @@ export default {
     return {
       list: null,
       listLoading: true,
-      name: 'parent'
+      name: 'parent',
+      dynamicSlotName: 'user'
     }
   },
   components: {child, child2, layout},
