@@ -49,6 +49,14 @@
       <template #footer>具名插槽的缩写 footer</template>
       <template #user="{props: aa}">{{aa}}</template>
     </layout>
+    <h1></h1>
+    <h3>7. 示例</h3>
+    <demo>
+      <template #people="{peo}">
+        <span v-if="peo.sex">男</span>
+        {{peo}}
+      </template>
+    </demo>
   </div>
 </template>
 
@@ -56,16 +64,30 @@
 import child from './child-component/index'
 import child2 from './child2/index'
 import layout from './layout/index'
+import demo from './demo/index'
 export default {
   data() {
     return {
       list: null,
       listLoading: true,
       name: 'parent',
-      dynamicSlotName: 'user'
+      dynamicSlotName: 'user',
+      peoples: [{
+        id: 1,
+        name: 'tom',
+        sex: 0,
+      }, {
+        id: 2,
+        name: 'bob',
+        sex: 0,
+      }, {
+        id: 3,
+        name: 'jene',
+        sex: 1,
+      }]
     }
   },
-  components: {child, child2, layout},
+  components: {child, child2, layout, demo},
   mounted() {
     console.log(this.$refs.child)
   },
