@@ -6,7 +6,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'vue Admin Template' // page title
+const name = defaultSettings.title || 'vue-example' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -28,12 +28,11 @@ module.exports = {
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
-  productionSourceMap: false,
+  productionSourceMap: true,
   devServer: {
     host: 'localhost',
     port: port,
     open: true,
-    hot: true,
     overlay: {
       warnings: false,
       errors: true
@@ -86,7 +85,7 @@ module.exports = {
     config
     // https://webpack.js.org/configuration/devtool/#development
       .when(process.env.NODE_ENV === 'development',
-        config => config.devtool('cheap-source-map')
+        config => config.devtool('eval-source-map')
       )
 
     config
